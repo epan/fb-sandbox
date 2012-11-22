@@ -77,7 +77,7 @@
 	 </script>
 
 	 <!-- Get friends info -->
-	  <a href="#" onclick="getUserFriends();">Get friends</a><br>
+	  <a href="#" onclick="getUserFriends();">Get 25 friends</a><br>
  <div id="user-friends"></div>
  <script>
  function getUserFriends() {
@@ -92,7 +92,7 @@
        for (var i=0; i < friends.length && i < 25; i++) {
          var friend = friends[i];
 
-         markup += '<img src="' + friend.picture + '"> ' + friend.name + '<br>';
+         markup += '<img src="https://graph.facebook.com/' + friend.id + '/picture"> ' + friend.name + '<br>';
        }
 
        document.getElementById('user-friends').innerHTML = markup;
