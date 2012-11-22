@@ -36,9 +36,9 @@
 	<script>
   		function handleStatusChange(response) {
 	      document.body.className = response.authResponse ? 'connected' : 'not_connected';
+
 	      if (response.authResponse) {
 	        console.log(response);
-
 	        updateUserInfo(response);
 	      }
 	    }
@@ -54,8 +54,8 @@
 
 	<script>
 		function loginUser() {    
-		 FB.login(function(response) { }, {scope:'email'});     
-		 }
+			FB.login(function(response) { }, {scope:'email'});     
+		}
 	</script>
 
 	<!-- CSS rules for which login/logout buttons to show -->
@@ -75,5 +75,30 @@
 	     });
 	   }
 	 </script>
+
+	 <!-- Get friends info -->
+	  <a href="#" onclick="getUserFriends();">Get friends</a><br>
+ <div id="user-friends"></div>
+ <script>
+ function getUserFriends() {
+   FB.api('/me/friends&fields=name,picture', function(response) {
+     console.log('Got friends: ', response);
+
+     if (!response.error) {
+       var markup = '';
+
+       var friends = response.data;
+
+       for (var i=0; i < friends.length && i < 25; i++) {
+         var friend = friends[i];
+
+         markup += '<img src="' + friend.picture + '"> ' + friend.name + '<br>';
+       }
+
+       document.getElementById('user-friends').innerHTML = markup;
+     }
+   });
+ }
+ </script>
 </body>
 </html>
