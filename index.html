@@ -81,6 +81,7 @@
  <div id="user-friends"></div>
  <script>
  function getUserFriends() {
+   FB.api('/me/friends&fields=name,picture', function(response) {
      console.log('Got friends: ', response);
 
      if (!response.error) {
