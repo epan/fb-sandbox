@@ -79,7 +79,7 @@
 	 <!-- Get friends info -->
 	<a href="#" onclick="getUserFriends();">Get 25 friends</a><br>
  	<div></div>
- 	<ul  id="user-friends" class="list"></ul>
+ 	<ul id="user-friends" class="list"></ul>
 	<script>
 		function getUserFriends() {
 			FB.api('/me/friends&fields=name,picture', function(response) {
@@ -93,7 +93,7 @@
 					for (var i=0; i < friends.length && i < 25; i++) {
 						var friend = friends[i];
 
-						markup += '<li><a href="person.html><img src="https://graph.facebook.com/' + friend.id + '/picture"></a> ' + friend.name + '</li>';
+						markup += '<li><a href="person.html"><img src="https://graph.facebook.com/' + friend.id + '/picture"> ' + friend.name + '</a></li>';
 					}
 
 					document.getElementById('user-friends').innerHTML = markup;
