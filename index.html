@@ -78,27 +78,27 @@
 
 	 <!-- Get friends info -->
 	  <a href="#" onclick="getUserFriends();">Get 25 friends</a><br>
- <div id="user-friends"></div>
- <script>
- function getUserFriends() {
-   FB.api('/me/friends&fields=name,picture', function(response) {
-     console.log('Got friends: ', response);
+ 	<div id="user-friends"></div>
+	<script>
+		function getUserFriends() {
+			FB.api('/me/friends&fields=name,picture', function(response) {
+				console.log('Got friends: ', response);
 
-     if (!response.error) {
-       var markup = '';
+				if (!response.error) {
+					var markup = '';
 
-       var friends = response.data;
+					var friends = response.data;
 
-       for (var i=0; i < friends.length && i < 25; i++) {
-         var friend = friends[i];
+					for (var i=0; i < friends.length && i < 25; i++) {
+						var friend = friends[i];
 
-         markup += '<img src="https://graph.facebook.com/' + friend.id + '/picture"> ' + friend.name + '<br>';
-       }
+						markup += '<img src="https://graph.facebook.com/' + friend.id + '/picture"> ' + friend.name + '<br>';
+					}
 
-       document.getElementById('user-friends').innerHTML = markup;
-     }
-   });
- }
- </script>
+					document.getElementById('user-friends').innerHTML = markup;
+				}
+			});
+		}
+	</script>
 </body>
 </html>
